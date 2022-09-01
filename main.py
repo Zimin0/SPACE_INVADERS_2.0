@@ -45,6 +45,7 @@ class Game():
     FONT_150 = pygame.font.Font(None, 150)
     __Debug_info = {}
 
+    ###################### Дебаг режим ######################
     @staticmethod
     def print_debug_info(win):
         """ Вывод информации для дебагинга """
@@ -59,32 +60,33 @@ class Game():
     def add_debug_info(information):
         for pair in information.items(): 
             Game.__Debug_info[pair[0]] = pair[1]
+    #########################################################
 
     def play(self):
         GAME_RUN = True
         DEBUG = 0
         frms = ['ship/space_ship_1.png', 'ship/space_ship_2.png', 'ship/space_ship_3.png', 'ship/space_ship_4.png']
-        print('bg/bg_ {}_{}.png'.format(Game.window_width,Game.window_height))
         bg_image_1 = Picture(
-            path='bg/bg_1920_1080.png', 
-            window_w=Game.window_width, 
-            window_h=Game.window_height, 
-            DATA_name='window', 
-            y=0) 
+                            path='bg/bg_1920_1080.png', 
+                            window_w=Game.window_width, 
+                            window_h=Game.window_height, 
+                            DATA_name='window', 
+                            y=0) 
 
         bg_image_2 = Picture(
-            path='bg/bg_1920_1080.png', 
-            window_w=Game.window_width, 
-            window_h=Game.window_height, 
-            DATA_name='window', 
-            y=-Game.window_height-1)  
+                            path='bg/bg_1920_1080.png', 
+                            window_w=Game.window_width, 
+                            window_h=Game.window_height, 
+                            DATA_name='window', 
+                            y=-Game.window_height-1)  
         
-        hero = Player(x=Game.window_width//2, 
-                      y=750, 
-                      height=80, 
-                      width=80, 
-                      health=1000, 
-                      frames_paths=frms) 
+        hero = Player(
+                     x=Game.window_width//2, 
+                     y=750, 
+                     height=80, 
+                     width=80, 
+                     health=1000, 
+                     frames_paths=frms) 
 
         #Hero_stats = Text(
         #                ['HEALTH: {}'.format(hero.health),
@@ -207,14 +209,13 @@ class Menu():
 
     def __init__(self, text): # bg_start.jpg
         pygame.draw.rect(Game.win, Menu.Orange, (Menu.window_width/2-Menu.window_width/3.2, Menu.window_height/2-Menu.window_height/2.35, 1200, 200),10) 
-        b1 = Picture('bg/62ec476ce5cbd.jpg',0) 
-        Picture(
+        #b1 = Picture('bg/62ec476ce5cbd.jpg',0) 
+        b1 = Picture(
             path='bg/62ec476ce5cbd.jpg', 
             window_w=Game.window_width, 
             window_h=Game.window_height, 
-            DATA_name='window', 
-            y=-Game.window_height-1)
-        Game.win.blit(b1.bg_image,(0,0))
+            DATA_name='window')
+        Game.win.blit(b1.image,(0,0))
 
 
         t0 = Game.FONT_150.render('SPACE INVADERS 2.0', True, Menu.Yellow)
