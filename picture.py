@@ -17,9 +17,8 @@ class Picture():
     def __init__(self, path, window_w, window_h, DATA_name, x=0, y=0):
         self.x = x
         self.y = y
-        self.path = path
-        self.resize_image(self.path, window_w, window_h, DATA_name)
-        self.image = pygame.image.load(self.path) # full_bg.jpg back_ground.png bg_1536_864.jpg
+        self.new_path = self.resize_image(path, window_w, window_h, DATA_name)
+        self.image = pygame.image.load(self.new_path) # full_bg.jpg back_ground.png bg_1536_864.jpg
     
     
     def move(self, win, window_height): 
@@ -35,6 +34,8 @@ class Picture():
     ###################### Ресайз картинок ######################
     def __claculate_size(self, window_w, window_h, DATA_name, DATA):
         """ POSSIBLE LAGS !!!"""
+        if DATA_name == 'window':
+            return window_w, window_h
         x = DATA[DATA_name][0]
         y = DATA[DATA_name][1]
         coef_x = DATA['window'][0] * DATA['window'][1] / x

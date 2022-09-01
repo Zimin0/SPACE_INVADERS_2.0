@@ -12,7 +12,6 @@ class Abstract_object():
         self.height = height
         self.width = width
         self.health = health
-        #self.resize_value =  Abstract_object.window_width * Abstract_object.window_height / ...
         self.__frames_paths = frames_paths # массив с путями к файлам анимации
         self.animation = [] # кадры анимации (load)
         for sprite in self.__frames_paths:
@@ -30,9 +29,9 @@ class Abstract_object():
                 self.x = random.randint(0, Abstract_object.window_width) 
                 self.y = -100 #random.randint(max_y, -self.height)
     
-    def die(self, linl_to_obj, link):
-        # Сделать die у абстракта, вызывать его параллельно с hit
-        Asteroid.all_asteroids.pop(Asteroid.all_asteroids.index(astr))   
+    #def die(self, linl_to_obj, link):
+    #    # Сделать die у абстракта, вызывать его параллельно с hit
+    #    Asteroid.all_asteroids.pop(Asteroid.all_asteroids.index(astr))   
     @staticmethod
     def check_collusion(win, obj1, obj2, DEBUG):
         """ DANGEROUS!!! POSSIBLE LAGS THERE!!!!"""

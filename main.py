@@ -63,9 +63,12 @@ class Game():
     #########################################################
 
     def play(self):
+        ####################### Предзагрузка #######################
         GAME_RUN = True
         DEBUG = 0
         frms = ['ship/space_ship_1.png', 'ship/space_ship_2.png', 'ship/space_ship_3.png', 'ship/space_ship_4.png']
+        #-------------- Резайз ВСЕХ картинок --------------#
+
         bg_image_1 = Picture(
                             path='bg/bg_1920_1080.png', 
                             window_w=Game.window_width, 
@@ -97,14 +100,17 @@ class Game():
         draw_pool = [
             hero,
         ]
-       
-        while GAME_RUN:
-            pygame.display.update() 
+
+        def time():
             Game.clock.tick(Game.FPS)
             Game.count_frames += 1
-
             if Game.count_frames >= Game.FPS: # заменить делением по модулю
                 Game.count_frames = 0
+        
+       ############################################################
+        while GAME_RUN:
+            pygame.display.update() 
+            time()
 
             #### Задний фон ####
             bg_image_1.move(Game.win, Game.window_height)
@@ -113,12 +119,6 @@ class Game():
 
             ############### Отрисовка астеройдов ###############
             for astr in Asteroid.all_asteroids:
-                """ для монеток и астеройдов нужно вызвать 
-                1) draw
-                2) infinity_appearance
-                3) check_collusion
-                4) aster - hit, coin - collect
-                """
                 astr.draw(Game.win, Game.count_frames)
                 astr.infinity_appearance()
                 if Abstract_object.check_collusion(Game.win, astr, hero, DEBUG):
@@ -209,7 +209,6 @@ class Menu():
 
     def __init__(self, text): # bg_start.jpg
         pygame.draw.rect(Game.win, Menu.Orange, (Menu.window_width/2-Menu.window_width/3.2, Menu.window_height/2-Menu.window_height/2.35, 1200, 200),10) 
-        #b1 = Picture('bg/62ec476ce5cbd.jpg',0) 
         b1 = Picture(
             path='bg/62ec476ce5cbd.jpg', 
             window_w=Game.window_width, 
@@ -270,7 +269,7 @@ def main():
     Menu('Стартуем!')
     
     while True:
-        Asteroid.make_n_asteroids(30)
+        #Asteroid.make_n_asteroids(30)
         Coin.make_n_coins(15)
         #pygame.time.set_timer(Game.add_debug_info({'time':True}),1000)
         SpaceInvaders.play()
