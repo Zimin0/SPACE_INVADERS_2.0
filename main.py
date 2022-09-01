@@ -13,20 +13,19 @@ from coin import Coin
 
 
 #######################################################################################################
-# 1) 
+# 1)  
 # 2) 
 # 3) 
 # 4) Добавить планеты на задний фон 1534
 # 5) переделать названия с _ на fF
 # 6) вращение метеоритов # много проблем
-# 7) убрать ресайз вообще 
+# 7) добавить ресайз на все картинки  
 # 8) 
 # 9) Функция для создания шрифта
 # 10) добавть генерацию астеройдов на некоторое время одной функцией
 #
 #######################################################################################################
-
-
+      
 # КОЛ-ВО КАРТИНОК ДОЛЖНО БЫТЬ ДЕЛИТЕЛЕМ 60-ТИ !!!!
 
 
@@ -65,8 +64,20 @@ class Game():
         GAME_RUN = True
         DEBUG = 0
         frms = ['ship/space_ship_1.png', 'ship/space_ship_2.png', 'ship/space_ship_3.png', 'ship/space_ship_4.png']
-        bg_image_1 = Picture('bg/bg_{}_{}.png'.format(Game.window_width,Game.window_height),0) 
-        bg_image_2 = Picture('bg/bg_{}_{}.png'.format(Game.window_width,Game.window_height),-Game.window_height-1) 
+        print('bg/bg_ {}_{}.png'.format(Game.window_width,Game.window_height))
+        bg_image_1 = Picture(
+            path='bg/bg_1920_1080.png', 
+            window_w=Game.window_width, 
+            window_h=Game.window_height, 
+            DATA_name='window', 
+            y=0) 
+
+        bg_image_2 = Picture(
+            path='bg/bg_1920_1080.png', 
+            window_w=Game.window_width, 
+            window_h=Game.window_height, 
+            DATA_name='window', 
+            y=-Game.window_height-1)  
         
         hero = Player(x=Game.window_width//2, 
                       y=750, 
@@ -107,11 +118,10 @@ class Game():
                 4) aster - hit, coin - collect
                 """
                 astr.draw(Game.win, Game.count_frames)
-                astr.infinity_appearance(max_y=-1400)
+                astr.infinity_appearance()
                 if Abstract_object.check_collusion(Game.win, astr, hero, DEBUG):
                     hero.hit(astr)
                 if DEBUG:
-                    Game.add_debug_info({"HEALTH":hero.health, "SCORE":hero.score})
                     astr.draw_hitbox(Game.win)
             ####################################################
 
@@ -120,7 +130,7 @@ class Game():
             ################# Отрисовка монет ##################
             for coin in Coin.all_coins:
                 coin.draw(Game.win, Game.count_frames)
-                coin.infinity_appearance(max_y=-6400)
+                coin.infinity_appearance() 
                 if Abstract_object.check_collusion(Game.win, coin, hero, DEBUG): # поменять порядок
                     coin.collect(hero)
                 if DEBUG:
@@ -173,7 +183,9 @@ class Game():
                                     'size': pygame.display.get_desktop_sizes(), 
                                     'bg1':bg_image_1.y, 
                                     'bg2': bg_image_2.y,
-                                    'obj':Abstract_object.all_objects })
+                                    'obj':Abstract_object.all_objects,
+                                    "HEALTH":hero.health, 
+                                    "SCORE":hero.score })
                 Game.print_debug_info(Game.win)
 
     def end_game(self):
@@ -196,6 +208,12 @@ class Menu():
     def __init__(self, text): # bg_start.jpg
         pygame.draw.rect(Game.win, Menu.Orange, (Menu.window_width/2-Menu.window_width/3.2, Menu.window_height/2-Menu.window_height/2.35, 1200, 200),10) 
         b1 = Picture('bg/62ec476ce5cbd.jpg',0) 
+        Picture(
+            path='bg/62ec476ce5cbd.jpg', 
+            window_w=Game.window_width, 
+            window_h=Game.window_height, 
+            DATA_name='window', 
+            y=-Game.window_height-1)
         Game.win.blit(b1.bg_image,(0,0))
 
 
@@ -251,8 +269,8 @@ def main():
     Menu('Стартуем!')
     
     while True:
-        Asteroid.make_n_asteroids(3)
-        Coin.make_n_coins(30)
+        Asteroid.make_n_asteroids(30)
+        Coin.make_n_coins(15)
         #pygame.time.set_timer(Game.add_debug_info({'time':True}),1000)
         SpaceInvaders.play()
         Menu('Конец игры!')
