@@ -65,7 +65,7 @@ class Game():
     def play(self):
         ####################### Предзагрузка #######################
         GAME_RUN = True
-        DEBUG = 0
+        DEBUGC = 0 
         frms = ['ship/space_ship_1.png', 'ship/space_ship_2.png', 'ship/space_ship_3.png', 'ship/space_ship_4.png']
         #-------------- Резайз ВСЕХ картинок --------------#
 
@@ -188,6 +188,7 @@ class Game():
                                     'obj':Abstract_object.all_objects,
                                     "HEALTH":hero.health, 
                                     "SCORE":hero.score })
+                
                 Game.print_debug_info(Game.win)
 
     def end_game(self):
@@ -239,6 +240,7 @@ class Menu():
         pause = pygame.Surface((Menu.window_width, Menu.window_height), pygame.SRCALPHA)   
         pause.fill(Menu.Yellow + [127]) # ((0, 221, 255, 127)               
         win.blit(pause, (0, 0)) 
+
 
     def __checkKeys(self):
         self.__quitGame() ##################################!!!!!!!!!!!!!!!! Зачем

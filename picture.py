@@ -14,6 +14,7 @@ class Picture():
         'asteroid_3': (85, 85),
         'asteroid_4': (100, 100)
     }
+    
     def __init__(self, path, window_w, window_h, DATA_name, x=0, y=0):
         self.x = x
         self.y = y

@@ -10,6 +10,7 @@ class Data():
     FONT_40 = pygame.font.Font(None, 40)
     FONT_90 = pygame.font.Font(None, 90)
     FONT_150 = pygame.font.Font(None, 150)
+    FONT_180 = pygame.font.Font(None, 200)
 
     FPS = 60
     count_frames = 0
@@ -22,10 +23,25 @@ class Data():
                     'ship/space_ship_2.png', 
                     'ship/space_ship_3.png', 
                     'ship/space_ship_4.png']
+    
     asteroid_images = [
                     'asteroids/asteroid_60.png',
                     'asteroids/asteroid_80.png',
                     'asteroids/asteroid_85.png',
                     'asteroids/asteroid_100.png']
+
+    Hit_Boxes = {
+        'window': (1920,1080),
+        'player': (80, 80),
+        'coin': (40, 40),
+        'asteroid_1': (60, 60),
+        'asteroid_2': (80, 80),
+        'asteroid_3': (85, 85),
+        'asteroid_4': (100, 100)
+    }
+
+    
+    
+    
     
 
