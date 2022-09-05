@@ -17,7 +17,7 @@ class Data():
     count_frames = 0
 
     bg_image = 'bg/bg_1920_1080.png'
-    coin_image = 'coin_orig_40_40.png'
+    coin_image = 'coin_40_40.png'
     menu_image = 'bg/62ec476ce5cbd.jpg'
     hero_images = [
                     'ship/space_ship_1.png', 
@@ -85,7 +85,7 @@ class Data():
     def resize_image(self, path, DATA_name):
         """ Изменяет изображение в соответствии с размером экрана пользователя."""
         # сделать проверку на существование таких файлов
-        width, height = self.__claculate_size(DATA_name, window_w=Data.window_width, window_h=Data.window_height, Data=Data.Hit_Boxes)
+        width, height = self.__claculate_size(DATA_name, window_w=Data.window_width, window_h=Data.window_height, DATA=Data.Hit_Boxes)
         src = cv2.imread(path,  -1) 
         dsize = (width, height)
         output = cv2.resize(src, dsize)
