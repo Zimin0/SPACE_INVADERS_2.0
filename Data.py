@@ -44,22 +44,18 @@ class Data():
 
     def __init__(self):
         # Грязно !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 # 
-        self.resize_image( Data.bg_image,'window')
-        self.resize_image( Data.coin_image, 'coin')
-        self.resize_image( Data.menu_image,'window')
-        self.resize_image( Data.hero_images[0], 'player')
-        self.resize_image( Data.hero_images[1], 'player')
-        self.resize_image( Data.hero_images[2], 'player')
-        self.resize_image( Data.hero_images[3], 'player')
-        self.resize_image( Data.hero_images[3], 'player')
-        self.resize_image( Data.asteroid_images[0], 'asteroid_1')
-        self.resize_image( Data.asteroid_images[1], 'asteroid_2')
-        self.resize_image( Data.asteroid_images[2], 'asteroid_3')
-        self.resize_image( Data.asteroid_images[3], 'asteroid_4')
-
-        
-
-    
+        Data.bg_image = self.resize_image( Data.bg_image,'window')
+        Data.coin_image = self.resize_image( Data.coin_image, 'coin')
+        Data.menu_image = self.resize_image( Data.menu_image,'window')
+        Data.hero_images[0] = self.resize_image( Data.hero_images[0], 'player')
+        Data.hero_images[1] = self.resize_image( Data.hero_images[1], 'player')
+        Data.hero_images[2] = self.resize_image( Data.hero_images[2], 'player')
+        Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
+        Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
+        Data.asteroid_images[0] = self.resize_image( Data.asteroid_images[0], 'asteroid_1')
+        Data.asteroid_images[1] = self.resize_image( Data.asteroid_images[1], 'asteroid_2')
+        Data.asteroid_images[2] = self.resize_image( Data.asteroid_images[2], 'asteroid_3')
+        Data.asteroid_images[3] = self.resize_image( Data.asteroid_images[3], 'asteroid_4')
 
     def __claculate_size(self, DATA_name, window_w, window_h, DATA):
         """ POSSIBLE LAGS !!!"""

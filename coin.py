@@ -13,7 +13,7 @@ class Coin(Abstract_object):
                         height=self.width,
                         width=self.height, 
                         health=None, 
-                        frames_paths=['coin_orig_40_40.png'])
+                        frames_paths=['coin_40_40.png'])
         self.__value = 10
         self.speed = 2
 
