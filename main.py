@@ -34,16 +34,6 @@ from Data import Data
 
 
 class Game():
-    #count_frames = 0
-    #window_height = pygame.display.get_desktop_sizes()[0][1] # 864 1080
-    #window_width = pygame.display.get_desktop_sizes()[0][0] # 1536 1920
-    #clock = pygame.time.Clock()
-    #FPS = 60
-    #win = pygame.display.set_mode((Data.window_width, Data.window_height), pygame.FULLSCREEN)
-    #FONT_20 = pygame.font.Font(None, 20)
-    #FONT_40 = pygame.font.Font(None, 40)
-    #FONT_90 = pygame.font.Font(None, 90)
-    #FONT_150 = pygame.font.Font(None, 150)
     __Debug_info = {}
 
     ###################### Дебаг режим ######################
