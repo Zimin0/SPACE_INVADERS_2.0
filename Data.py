@@ -42,20 +42,45 @@ class Data():
         'asteroid_4': (100, 100)
     }
 
+    # path Data.NEW_DATA[][0]
+    # height = Data.NEW_DATA[][2][0]
+    # width = Data.NEW_DATA[][2][1]
+    NEW_DATA = [ 
+        ['bg/bg_1920_1080.png',         'window',     [0,0]],
+        ['bg/62ec476ce5cbd.jpg',        'window',     [0,0]],
+        ['coin_40_40.png',              'coin',       [0,0]],
+        ['ship/space_ship_1.png',       'player',     [0,0]],
+        ['ship/space_ship_2.png',       'player',     [0,0]],
+        ['ship/space_ship_3.png',       'player',     [0,0]],
+        ['ship/space_ship_4.png',       'player',     [0,0]],
+        ['asteroids/asteroid_60.png' ,  'asteroid_1', [0,0]],
+        ['asteroids/asteroid_80.png' ,  'asteroid_2', [0,0]],
+        ['asteroids/asteroid_85.png' ,  'asteroid_3', [0,0]],
+        ['asteroids/asteroid_100.png' , 'asteroid_4', [0,0]]
+    ]
+
     def __init__(self):
+        for image in Data.NEW_DATA:
+            path, hei, wid = self.resize_image(image[0], image[1])
+            print(path)
+            Data.NEW_DATA[0] = path
+            Data.NEW_DATA[image[2]][0] = hei
+            Data.NEW_DATA[image[2]][1] = wid
+        print(Data.NEW_DATA, Data.Hit_Boxes)
+
         # Грязно !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 # 
-        Data.bg_image = self.resize_image( Data.bg_image,'window')
-        Data.coin_image = self.resize_image( Data.coin_image, 'coin')
-        Data.menu_image = self.resize_image( Data.menu_image,'window')
-        Data.hero_images[0] = self.resize_image( Data.hero_images[0], 'player')
-        Data.hero_images[1] = self.resize_image( Data.hero_images[1], 'player')
-        Data.hero_images[2] = self.resize_image( Data.hero_images[2], 'player')
-        Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
-        Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
-        Data.asteroid_images[0] = self.resize_image( Data.asteroid_images[0], 'asteroid_1')
-        Data.asteroid_images[1] = self.resize_image( Data.asteroid_images[1], 'asteroid_2')
-        Data.asteroid_images[2] = self.resize_image( Data.asteroid_images[2], 'asteroid_3')
-        Data.asteroid_images[3] = self.resize_image( Data.asteroid_images[3], 'asteroid_4')
+        #Data.bg_image = self.resize_image( Data.bg_image,'window')
+        #Data.coin_image = self.resize_image( Data.coin_image, 'coin')
+        #Data.menu_image = self.resize_image( Data.menu_image,'window')
+        #Data.hero_images[0] = self.resize_image( Data.hero_images[0], 'player')
+        #Data.hero_images[1] = self.resize_image( Data.hero_images[1], 'player')
+        #Data.hero_images[2] = self.resize_image( Data.hero_images[2], 'player')
+        #Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
+        #Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
+        #Data.asteroid_images[0] = self.resize_image( Data.asteroid_images[0], 'asteroid_1')
+        #Data.asteroid_images[1] = self.resize_image( Data.asteroid_images[1], 'asteroid_2')
+        #Data.asteroid_images[2] = self.resize_image( Data.asteroid_images[2], 'asteroid_3')
+        #Data.asteroid_images[3] = self.resize_image( Data.asteroid_images[3], 'asteroid_4')
 
     def __claculate_size(self, DATA_name, window_w, window_h, DATA):
         """ POSSIBLE LAGS !!!"""
@@ -88,7 +113,7 @@ class Data():
 
         new_name = self.__make_size_name(path, width, height)
         cv2.imwrite(new_name, output) 
-        return new_name
+        return new_name, height, width
     
 obj1 = Data()
 

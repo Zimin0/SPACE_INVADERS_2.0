@@ -57,18 +57,18 @@ class Game():
         ####################### Предзагрузка #######################
         GAME_RUN = True
         DEBUG = 0 
-        frms = ['ship/space_ship_1.png', 'ship/space_ship_2.png', 'ship/space_ship_3.png', 'ship/space_ship_4.png']
+        #frms = ['ship/space_ship_1.png', 'ship/space_ship_2.png', 'ship/space_ship_3.png', 'ship/space_ship_4.png']
         #-------------- Резайз ВСЕХ картинок --------------#
 
         bg_image_1 = Picture(
-                            path='bg/bg_1920_1080.png', 
+                            path=Data.bg_image, 
                             window_w=Data.window_width, 
                             window_h=Data.window_height, 
                             DATA_name='window', 
                             y=0) 
 
         bg_image_2 = Picture(
-                            path='bg/bg_1920_1080.png', 
+                            path=Data.bg_image, 
                             window_w=Data.window_width, 
                             window_h=Data.window_height, 
                             DATA_name='window', 
@@ -77,10 +77,10 @@ class Game():
         hero = Player(
                      x=Data.window_width//2, 
                      y=750, 
-                     height=80, 
-                     width=80, 
+                     height=Data.Hit_Boxes['player'][0], 
+                     width=Data.Hit_Boxes['player'][1], 
                      health=1000, 
-                     frames_paths=frms) 
+                     frames_paths=Data.hero_images) 
 
         #Hero_stats = Text(
         #                ['HEALTH: {}'.format(hero.health),
