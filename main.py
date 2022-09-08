@@ -107,6 +107,7 @@ class Game():
             bg_image_1.move(Data.win, Data.window_height)
             bg_image_2.move(Data.win, Data.window_height)
             ####################
+            Game.add_debug_info({'hero_h':hero.height, 'hero_w':hero.width})
 
             ############### Отрисовка астеройдов ###############
             for astr in Asteroid.all_asteroids:
@@ -260,6 +261,8 @@ def main():
 
     SpaceInvaders = Game()
     Menu('Стартуем!')
+    o = Data()
+    print(Data.Hit_Boxes)
     
     while True:
         Asteroid.make_n_asteroids(30)

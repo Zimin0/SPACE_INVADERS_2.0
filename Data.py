@@ -1,10 +1,10 @@
 import pygame
 import cv2
-pygame.init()
+#pygame.init()
 
 class Data():
-    window_height = pygame.display.get_desktop_sizes()[0][1] 
-    window_width = pygame.display.get_desktop_sizes()[0][0] 
+    window_height = 864#pygame.display.get_desktop_sizes()[0][1] 
+    window_width = 1536#pygame.display.get_desktop_sizes()[0][0] 
     clock = pygame.time.Clock()
     win = pygame.display.set_mode((window_width, window_height), pygame.FULLSCREEN)
     FONT_20 = pygame.font.Font(None, 20)
@@ -32,30 +32,31 @@ class Data():
                     'asteroids/asteroid_100.png']
 
     
-    Hit_Boxes = {
-        'window': (1920,1080),
-        'player': (80, 80),
-        'coin': (40, 40),
-        'asteroid_1': (60, 60),
-        'asteroid_2': (80, 80),
-        'asteroid_3': (85, 85),
-        'asteroid_4': (100, 100)
+    Hit_Boxes = { 
+        'window': [1920,1080],
+        'player': [80, 80],
+        'coin': [40, 40],
+        'asteroid_1': [60, 60],
+        'asteroid_2': [80, 80],
+        'asteroid_3': [85, 85],
+        'asteroid_4': [100, 100]
     }
 
     def __init__(self):
         # Грязно !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 # 
-        Data.bg_image = self.resize_image( Data.bg_image,'window')
-        Data.coin_image = self.resize_image( Data.coin_image, 'coin')
-        Data.menu_image = self.resize_image( Data.menu_image,'window')
-        Data.hero_images[0] = self.resize_image( Data.hero_images[0], 'player')
-        Data.hero_images[1] = self.resize_image( Data.hero_images[1], 'player')
-        Data.hero_images[2] = self.resize_image( Data.hero_images[2], 'player')
-        Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
-        Data.hero_images[3] = self.resize_image( Data.hero_images[3], 'player')
-        Data.asteroid_images[0] = self.resize_image( Data.asteroid_images[0], 'asteroid_1')
-        Data.asteroid_images[1] = self.resize_image( Data.asteroid_images[1], 'asteroid_2')
-        Data.asteroid_images[2] = self.resize_image( Data.asteroid_images[2], 'asteroid_3')
-        Data.asteroid_images[3] = self.resize_image( Data.asteroid_images[3], 'asteroid_4')
+
+        Data.bg_image, Data.Hit_Boxes['window'][0], Data.Hit_Boxes['window'][1] = self.resize_image( Data.bg_image,'window')
+        Data.coin_image, Data.Hit_Boxes['coin'][0], Data.Hit_Boxes['coin'][1]= self.resize_image( Data.coin_image, 'coin')
+        Data.menu_image, Data.Hit_Boxes['window'][0], Data.Hit_Boxes['window'][1] = self.resize_image( Data.menu_image,'window')
+        Data.hero_images[0], Data.Hit_Boxes['player'][0], Data.Hit_Boxes['player'][1] = self.resize_image( Data.hero_images[0], 'player')
+        Data.hero_images[1], Data.Hit_Boxes['player'][0], Data.Hit_Boxes['player'][1] = self.resize_image( Data.hero_images[1], 'player')
+        Data.hero_images[2], Data.Hit_Boxes['player'][0], Data.Hit_Boxes['player'][1] = self.resize_image( Data.hero_images[2], 'player')
+        Data.hero_images[3], Data.Hit_Boxes['player'][0], Data.Hit_Boxes['player'][1] = self.resize_image( Data.hero_images[3], 'player')
+        Data.hero_images[3],Data.Hit_Boxes['player'][0], Data.Hit_Boxes['player'][1] = self.resize_image( Data.hero_images[3], 'player')
+        Data.asteroid_images[0], Data.Hit_Boxes['asteroid_1'][0], Data.Hit_Boxes['asteroid_1'][1] = self.resize_image( Data.asteroid_images[0], 'asteroid_1')
+        Data.asteroid_images[1], Data.Hit_Boxes['asteroid_2'][0], Data.Hit_Boxes['asteroid_2'][1] = self.resize_image( Data.asteroid_images[1], 'asteroid_2')
+        Data.asteroid_images[2], Data.Hit_Boxes['asteroid_3'][0], Data.Hit_Boxes['asteroid_3'][1] = self.resize_image( Data.asteroid_images[2], 'asteroid_3')
+        Data.asteroid_images[3], Data.Hit_Boxes['asteroid_4'][0], Data.Hit_Boxes['asteroid_4'][1] = self.resize_image( Data.asteroid_images[3], 'asteroid_4')
 
     def __claculate_size(self, DATA_name, window_w, window_h, DATA):
         """ POSSIBLE LAGS !!!"""
@@ -88,7 +89,7 @@ class Data():
 
         new_name = self.__make_size_name(path, width, height)
         cv2.imwrite(new_name, output) 
-        return new_name
+        return new_name, width, height
     
 obj1 = Data()
 
