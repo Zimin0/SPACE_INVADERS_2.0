@@ -7,3 +7,6 @@
 + :white_check_mark: main greet menu, pause menu 
 + :white_check_mark: enemy spawner
 + :white_check_mark: and others...
+
+
+![Image alt](https://github.com/{Zimin0}/{SPACE_INVADERS_2.0}/raw/master//11.jpg)
